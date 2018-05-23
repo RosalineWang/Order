@@ -1,0 +1,216 @@
+<App Background="#fff">
+	<JavaScript>
+		var Observable = require("FuseJS/Observable");
+
+		var menu = Observable();
+		menu =["Beetroot Salad","Sushi platter","Peking duck","Honey-marinated cod fillet","Wagyu Beef","Fried Rice","Sakura Sake Cocktail Jelly","Beetroot Salad","Sushi platter","Peking duck","Honey-marinated cod fillet","Wagyu Beef"];
+		var unconfirm = Observable();
+		unconfirm =["Beetroot Salad","Sushi platter","Peking duck"];
+		var confirm = Observable();
+		confirm =["Honey-marinated cod fillet","Wagyu Beef","Fried Rice"];
+
+		/*
+		  fetch(" http://159.65.129.238/dinopos/activetable/")
+	        .then(function(response) {
+	        	return response.json(); })
+	        .then(function(responseObject) {
+	            for (var i in responseObject) {
+	            	responseObject[i]["color"] = "#fff";
+	            	tables.add(responseObject[i]);
+	            }
+	        })
+	         .catch(function(err) {
+			        console.log('Error');
+			        console.log(JSON.stringify(err));
+			    });*/
+
+		module.exports = {
+            menu:menu,
+            unconfirm,
+            confirm
+
+        };
+
+	</JavaScript>
+
+	
+	<Panel>
+		<!-- 	#4B50A4 #353894 #3D393A #5C5A5B #FB9336 #CED2F2 #D1D1F3-->
+		<StackPanel Width="25%" Alignment="Left" Background="#E6E5EB">
+			<Panel>
+
+				<Rectangle Color="#353894" Width="100%" Height="70" Alignment="Left">
+					<Image File="Assets/10.5/Ordering Screen/icons8-back_filled.png" Height="50%" Alignment="Left" />
+
+					<Grid RowCount="2" ColumnCount="1" Alignment="Left" Margin="40,4,0,25">
+						<Text Value="TABLE" FontSize="15" TextColor="#fff" />
+						<Text Value="5999" FontSize="25" TextColor="#fff" Font="Bold" />
+					</Grid>
+			
+				
+					<Image File="Assets/Dinologo/add-user.png" Height="30%" Alignment="Right" X="-30" />
+
+					<Grid RowCount="2" ColumnCount="1" Alignment="Center">
+						<Text Value="PAX" FontSize="15" TextColor="#fff" Alignment="TopCenter" Y="-7" X="10" />
+						<Text Value="10" FontSize="25" TextColor="#fff" Font="Bold" Y="-10" X="10" />
+					</Grid>
+					
+				</Rectangle>
+
+			</Panel>
+			<Panel>
+				<Text Value="$82.00" FontSize="15" TextColor="#353894" Alignment="Left" Font="Bold" X="10" />
+				<Text Value="Item" FontSize="15" TextColor="#353894" Alignment="Center" X="-25" Font="Bold" />
+			
+				
+			</Panel>
+			
+
+			<StackPanel ux:Name="itemlist" Height="500">
+				<Each Items="{unconfirm}">
+					<Grid RowCount="1" ColumnCount="3" Height="50">
+						<Panel Background="#e0e1e2">
+							<Text Value="1" FontSize="25" X="15" Y="8" Font="Bold" />
+						</Panel>
+						<Panel Background="#e0e1e2">
+							<Text Value="{data()}" FontSize="15" Y="6" />
+						</Panel>
+						<Panel Background="#e0e1e2">
+							<Text Value="$20.00" FontSize="15" Alignment="BottomCenter" X="9" Y="-5" Font="Bold" />
+						</Panel>			
+						
+					</Grid>
+					<Rectangle Height="1" Color="#c9c9c9" />
+				</Each>
+				<Each Items="{confirm}">
+					<Grid RowCount="1" ColumnCount="3" Height="50">
+						<Panel Background="#fff">
+							<Text Value="1" FontSize="25" X="15" Y="8" Font="Bold" />
+						</Panel>
+						<Panel Background="#fff">
+							<Text Value="{data()}" FontSize="15" Y="6" />
+						</Panel>
+						<StackPanel Background="#fff">
+							<Circle Color="#5DE3FF" X="7" Y="5" Height="25" Width="25" Alignment="Center" />
+							<Text Value="$20.00" FontSize="15" Alignment="BottomCenter" X="9" Y="5" Font="Bold" />
+						</StackPanel>			
+						
+					</Grid>
+					<Rectangle Height="1" Color="#c9c9c9" />
+				</Each>
+		
+			</StackPanel>
+			
+			<Button Alignment="Bottom" Background="Gray" Height="59">
+				<Text ux:Name="orderconfirm" Color="#fff" Value="Confirm Order" Alignment="Center" FontSize="19" Font="Bold" />
+				<WhileHovering>
+					<Change orderconfirm.Color="#353894" />
+				</WhileHovering>
+			</Button>
+
+		
+		</StackPanel>
+
+		<StackPanel Background="#3D393A" X="87" Width="67%" Alignment="Center" Height="100%">
+
+			<Panel>
+				<Image File="Assets/10.5/Ordering Screen/icons8-back_filled.png" Alignment="Left" Height="40" Margin="5" Y="0" />
+				<Image File="Assets/DinoLogo/right-arrow.png" Alignment="Right" Height="40" Margin="5" Y="0" />
+				<Grid RowCount="2" ColumnCount="5" Width="80%" Y="-60">
+						<Rectangle Color="#FF8E1E" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
+							<RobotoText Color="Black" Alignment="Center" Value="All" />
+							
+						</Rectangle>
+						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
+							<RobotoText Color="White" Alignment="Center" Value="Starter" />
+						</Rectangle>
+						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
+							<RobotoText Color="White" Alignment="Center" Value="Soup" />
+						</Rectangle>
+						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
+							<RobotoText Color="White" Alignment="Center" Value="Seafood" />
+							
+						</Rectangle>
+						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
+							<RobotoText Color="White" Alignment="Center" Value="Meat" />
+						</Rectangle>
+						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
+							<RobotoText Color="White" Alignment="Center" Value="Vegetable" />
+						</Rectangle>
+						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
+							<RobotoText Color="White" Alignment="Center" Value="Rice" />
+						</Rectangle>
+						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
+							<RobotoText Color="White" Alignment="Center" Value="Noodle" />
+						</Rectangle>
+						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
+							<RobotoText Color="White" Alignment="Center" Value="Drinks" />
+							
+						</Rectangle>
+						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
+							<RobotoText Color="White" Alignment="Center" Value="Dessert" />
+						</Rectangle>
+				</Grid>
+			</Panel>
+			
+			<Panel Height="50%">
+				
+				<Grid RowCount="2" ColumnCount="4" Height="450" Width="660" Y="-50">
+
+					<Each Items="{menu}">
+						<Rectangle Color="#2B2728" Height="140" CornerRadius="2" Margin="5" Padding="2" Alignment="Top" Width="157" Y="45">
+							<StackPanel ItemSpacing="0">
+								<Panel>
+									<RobotoText Color="Black" Alignment="TopLeft" Value="M6002" FontSize="13" Font="Bold" Margin="3.8" />
+									<Rectangle Alignment="TopLeft" Color="White" Width="45" Height="20" CornerRadius="5" Opacity="0.5" Margin="3" />
+
+									<Rectangle Color="Black" Alignment="BottomRight" Width="43" Height="15" CornerRadius="2" Opacity="0.8" Margin="3">
+									<RobotoText Color="White" Alignment="Center" Value="$26.00" FontSize="12" />
+									</Rectangle>
+									<Image File="Assets/food.jpg" Alignment="TopCenter" Width="100%" />
+
+								</Panel>
+								<Panel Margin="5">
+									<RobotoText Color="#fff" Value="{data()}" FontSize="14" TextWrapping="Wrap" Alignment="CenterLeft" />
+								</Panel>					
+							</StackPanel>
+							
+							
+						</Rectangle>
+					</Each>
+					
+				</Grid>
+			</Panel>
+		
+			<Panel Height="20%">
+				<Image File="Assets/10.5/Ordering Screen/icons8-back_filled.png" Height="25" Alignment="Left" Margin="5" Y="14" X="20" />
+				<Image File="Assets/DinoLogo/right-arrow.png" Alignment="Right" Height="25" Margin="5" Y="15" X="-10" />
+				<Grid RowCount="1" ColumnCount="9" Width="80%">
+					<!--Panel Background="#d1d1f3" Width="50%" Height="90%" Y="15"-->
+					<Circle Height="30" Y="20">
+						<Text FontSize="17" TextColor="Gray" Value="1" TextAlignment="Center" Font="Bold" />
+					</Circle>
+					<Circle Height="30" Y="20">
+						<Text FontSize="17" TextColor="Gray" Value="2" TextAlignment="Center" Font="Bold" />
+					</Circle>
+					<Circle Height="30" Y="20">
+						<Text FontSize="17" TextColor="Gray" Value="3" TextAlignment="Center" Font="Bold" />
+					</Circle>
+					<Circle Height="30" Y="20">
+						<Text FontSize="17" TextColor="Gray" Value="4" TextAlignment="Center" Font="Bold" />
+					</Circle>
+					<Circle Height="30" Y="20">
+						<Text FontSize="17" TextColor="Gray" Value="5" TextAlignment="Center" Font="Bold" />
+					</Circle>
+					
+				</Grid>
+
+			</Panel>
+			
+		</StackPanel>
+
+		<Panel ux:Name="sidebar" Width="8%" Height="660" Alignment="Right" Background="#3E4262">
+		</Panel>
+	</Panel>
+	
+</App>
