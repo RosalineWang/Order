@@ -5,7 +5,7 @@
 		var menu = Observable();
 		menu =["Beetroot Salad","Sushi platter","Peking duck","Honey-marinated cod fillet","Wagyu Beef","Fried Rice","Sakura Sake Cocktail Jelly","Beetroot Salad","Sushi platter","Peking duck","Honey-marinated cod fillet","Wagyu Beef"];
 		var unconfirm = Observable();
-		unconfirm =["Beetroot Salad","Sushi platter","Peking duck"];
+		unconfirm =["Beetroot SaladBeetroot SaladBeetroot SaladBeetroot Salad","Sushi platter","Peking duck"];
 		var confirm = Observable();
 		confirm =["Honey-marinated cod fillet","Wagyu Beef","Fried Rice"];
 
@@ -58,9 +58,9 @@
 				</Rectangle>
 
 			</Panel>
-			<Panel>
-				<Text Value="$82.00" FontSize="15" TextColor="#353894" Alignment="Left" Font="Bold" X="10" />
-				<Text Value="Item" FontSize="15" TextColor="#353894" Alignment="Center" X="-25" Font="Bold" />
+			<Panel Color="#4C4D9A">
+				<Text Value="82.00" FontSize="15" TextColor="#353894" Alignment="Center" Font="Bold" X="-10" Color="#fff" />
+				<Text Value="1:15pm" FontSize="15" TextColor="#353894" Alignment="Right" X="-25" Font="Bold" />
 			
 				
 			</Panel>
@@ -68,36 +68,27 @@
 
 			<StackPanel ux:Name="itemlist" Height="500">
 				<Each Items="{unconfirm}">
-					<Grid RowCount="1" ColumnCount="3" Height="50">
-						<Panel Background="#e0e1e2">
-							<Text Value="1" FontSize="25" X="15" Y="8" Font="Bold" />
-						</Panel>
-						<Panel Background="#e0e1e2">
-							<Text Value="{data()}" FontSize="15" Y="6" />
-						</Panel>
-						<Panel Background="#e0e1e2">
-							<Text Value="$20.00" FontSize="15" Alignment="BottomCenter" X="9" Y="-5" Font="Bold" />
-						</Panel>			
+					
+					<Panel Background="#e0e1e2" Alignment="Left" Width="20%">
+						<Text Value="1" FontSize="20" X="15" Y="8" Font="Bold" />
+					</Panel>				
 						
-					</Grid>
+					<Panel Background="#e0e1e2" Alignment="Center"  Width="60%">
+						<Text Value="{data()}" FontSize="15"  />
+					</Panel>
+										
+					<Panel Background="#e0e1e2" Alignment="Right"  Width="20%">
+						<Text Value="$20.00" FontSize="15" Alignment="BottomCenter" X="9" Y="-5" Font="Bold" />
+					</Panel>
+					
+					
 					<Rectangle Height="1" Color="#c9c9c9" />
 				</Each>
-				<Each Items="{confirm}">
-					<Grid RowCount="1" ColumnCount="3" Height="50">
-						<Panel Background="#fff">
-							<Text Value="1" FontSize="25" X="15" Y="8" Font="Bold" />
-						</Panel>
-						<Panel Background="#fff">
-							<Text Value="{data()}" FontSize="15" Y="6" />
-						</Panel>
-						<StackPanel Background="#fff">
-							<Circle Color="#5DE3FF" X="7" Y="5" Height="25" Width="25" Alignment="Center" />
-							<Text Value="$20.00" FontSize="15" Alignment="BottomCenter" X="9" Y="5" Font="Bold" />
-						</StackPanel>			
-						
-					</Grid>
-					<Rectangle Height="1" Color="#c9c9c9" />
-				</Each>
+				<!--Each Items="{confirm}" >
+					
+					<ConfirmOrder />
+					<Rectangle Height="1" Color="#c9c9c9" />	
+				</Each-->
 		
 			</StackPanel>
 			

@@ -1,0 +1,16 @@
+<Panel ux:Class="ConfirmOrder" >
+	<Grid RowCount="1" ColumnCount="3" Height="50">
+		<Panel Background="#fff">
+			<Text Value="1" FontSize="25" X="15" Y="8" Font="Bold" />
+		</Panel>
+		<Panel Background="#fff">
+			<Text Value="{data()}" FontSize="15" Y="6" />
+		</Panel>
+		<StackPanel Background="#fff">
+			<Circle Color="#5DE3FF" X="7" Y="5" Height="25" Width="25" Alignment="Center" />
+			<Text Value="$20.00" FontSize="15" Alignment="BottomCenter" X="9" Y="5" Font="Bold" />
+		</StackPanel>	
+			
+	</Grid>
+	
+</Panel>
