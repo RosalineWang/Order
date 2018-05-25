@@ -4,7 +4,7 @@
 			<Text Value="1" FontSize="25" X="15" Y="8" Font="Bold" />
 		</Panel>
 		<Panel Background="#fff">
-			<Text Value="{data()}" FontSize="15" Y="6" />
+			<Text Value="{data()}" FontSize="15" Y="6" TextWrapping="Wrap"/>
 		</Panel>
 		<StackPanel Background="#fff">
 			<Circle Color="#5DE3FF" X="7" Y="5" Height="25" Width="25" Alignment="Center" />
