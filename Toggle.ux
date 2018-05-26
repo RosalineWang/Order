@@ -1,0 +1,36 @@
+<Panel ux:Class="OToggle" PrimaryColor="#fff" SecondaryColor="#7C82F4">
+	
+	<float4 ux:Property="PrimaryColor" />
+	<float4 ux:Property="SecondaryColor" />
+	<RobotoText ux:Name="queueNum" Alignment="CenterLeft" Value="Serve Now" FontSize="13" Color="{ReadProperty PrimaryColor}" X="7" />
+
+
+	<RobotoText ux:Name="reserveNum" Color="{ReadProperty SecondaryColor}" Alignment="CenterRight" FontSize="13" Value="Hold Item" Margin="2, 2, 2, 2" X="-8" />
+
+
+	<bool ux:Property="IsActive" />
+	<Rectangle ux:Name="handle" Margin="0, 0, 0, 0" Alignment="Left" Color="{ReadProperty SecondaryColor}" CornerRadius="25" Height="30" Width="50%" />
+	
+	<Rectangle ux:Name="background" Layer="Background" Color="{ReadProperty PrimaryColor}" CornerRadius="24" Height="30" Width="150" Alignment="Default">
+	<Stroke Color="#7C82F4" Width="1.7" />
+	</Rectangle>
+	
+	<Clicked>
+		<ToggleSwipeActive Target="swipe" />
+	</Clicked>
+	
+	<SwipeGesture ux:Name="swipe" Length="50" Direction="Right" Type="Active" IsActive="{Property IsActive}" />
+	<SwipingAnimation Source="swipe">
+		<Move Target="handle" X="75" />
+		<Change handle.Color="{ReadProperty SecondaryColor}" />
+		<Change queueNum.Color="{ReadProperty SecondaryColor}" />
+		<Change background.Color="{ReadProperty PrimaryColor}" />
+
+		<Change reserveNum.Color="{ReadProperty PrimaryColor}" />
+		
+	</SwipingAnimation>
+	
+	
+
+
+</Panel>

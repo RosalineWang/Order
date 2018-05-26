@@ -57,4 +57,4 @@ Polyfills.Window:js/EventTarget.js:eventtarget-c2230a48.js:js/fetch.js:fetch-bb9
 FuseJS
 Outracks.Simulator.Common.Uno
 Fuse.Preview.Core:fight.png:fight-1537455b.png
-Order:Fonts/Roboto.ttf:roboto-0338e87c.ttf:Assets/food.jpg:food-9e1dc99d.jpg:Assets/10.5/Ordering Screen/icons8-back_filled.png:icons8-back_filled-867a1c06.png:Assets/Dinologo/add-user.png:add-user-6cf15f34.png:Assets/DinoLogo/right-arrow.png:right-arrow-7b42dfd3.png
+Order:Assets/food.jpg:food-9e1dc99d.jpg:Assets/10.5/Ordering Screen/icons8-back_filled.png:icons8-back_filled-867a1c06.png:Assets/Dinologo/add-user.png:add-user-6cf15f34.png:Assets/DinoLogo/right-arrow.png:right-arrow-7b42dfd3.png:Fonts/Roboto.ttf:roboto-0338e87c.ttf

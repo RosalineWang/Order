@@ -6,7 +6,7 @@
 			
 		<Panel Alignment="Center" Width="60%" Y="-15">
 			<StackPanel Y="-3">
-				<Text Value="{data()}" FontSize="16" TextWrapping="Wrap" Font="Bold" TextColor="#000" />
+				<Text Value="{name}" FontSize="16" TextWrapping="Wrap" Font="Bold" TextColor="#000" />
 				<Text Value="" FontSize="16" TextWrapping="Wrap" />
 			</StackPanel>
 			

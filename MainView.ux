@@ -5,15 +5,29 @@
 		var menu = Observable();
 		menu =["Beetroot Salad","Sushi platter","Peking duck","Honey-marinated cod fillet","Wagyu Beef","Fried Rice","Sakura Sake Cocktail Jelly","Beetroot Salad","Sushi platter","Peking duck","Honey-marinated cod fillet","Wagyu Beef"];
 		var unconfirm = Observable();
-		unconfirm =["Beetroot Salad","Sushi platter","Peking duck"];
+		unconfirm =[
+			{"name":"Beetroot Salad",
+			 "position":90},
+			{"name":"Sushi platter",
+			 "position":180},
+			{"name":"Peking duck",
+			 "position":270}];
+			 
 		var confirm = Observable();
-		confirm =["Honey-marinated cod fillet","Wagyu Beef","Fried Rice"];
+		confirm =[
+			{"name":"Honey-marinated",
+			 "position":20},
+			{"name":"cod fillet",
+			 "position":100} ,
+			{"name":"Wagyu Beef",
+			 "position":170}];
+
 		var showUCSummary = Observable(false);
-		function unconfirmSummary(){
-			showUCSummary.value = true;
+		function check(args){
+			console.log(args.data['name']);
 		}
 		/*
-		  fetch(" http://159.65.129.238/dinopos/activetable/")
+		  fetch("http://159.65.129.238/dinopos/activetable/")
 	        .then(function(response) {
 	        	return response.json(); })
 	        .then(function(responseObject) {
@@ -31,8 +45,7 @@
             menu:menu,
             unconfirm,
             confirm,
-            unconfirmSummary,
-            showUCSummary
+            check
 
         };
 
@@ -40,7 +53,7 @@
 
 	
 	<Panel>
-		<!-- 	#4B50A4 #353894 #3D393A #5C5A5B #FB9336 #CED2F2 #D1D1F3-->
+		<!-- #4B50A4 #353894 #3D393A #5C5A5B #FB9336 #CED2F2 #D1D1F3-->
 		<StackPanel Width="25%" Alignment="Left" Background="#E6E5EB">
 			<Panel>
 
@@ -66,25 +79,34 @@
 			<Panel Color="#4C4D9A">
 				<Text Value="82.00" FontSize="15" TextColor="#353894" Alignment="Center" Font="Bold" X="-10" Color="#fff" />
 				<Text Value="1:15pm" FontSize="15" TextColor="#353894" Alignment="Right" X="-25" Font="Bold" />
-				<Shadow Color="#00000056" />
-			
-				
+				<Shadow Color="#00000056" />	
 			</Panel>
 			
-
+			<ScrollView>
 			<StackPanel ux:Name="itemlist" Width="100%" Height="465" Background="#E6E5EB" Margin="0, 0, 0, 30">
-				<Each Items="{unconfirm}">
-					<UnconfirmOrder />
-					<Clicked Handler="{unconfirmSummary}" />
-				</Each>
-				<!--Each Items="{confirm}" >
-					
-					<ConfirmOrder />
-					<Rectangle Height="1.5" Color="#c9c9c9" />	
+				
+				<!--Each Items="{unconfirm}">
+					<UnconfirmOrder>
+						<Clicked>
+						<Set shadow.Opacity="0.733" />
+						<Set summaryUncon.Visibility="Visible" Delay="0.1" />
+						<Set summaryUncon.Y="{position}" />
+						
+						</Clicked>
+					</UnconfirmOrder>	
 				</Each-->
+				<Each Items="{confirm}">
+					<ConfirmOrder>
+						<Clicked>
+							<Set shadow.Opacity="0.733" />
+							<Set summaryCon.Visibility="Visible" Delay="0.1" />
+							<Set summaryCon.Y="{position}" />
+						</Clicked>
+					</ConfirmOrder>
+				</Each>
 		
 			</StackPanel>
-			
+			</ScrollView>
 			<Rectangle Alignment="Bottom" Background="#FFF" Height="65" Y="8">
 
 				<Button Background="Gray" Height="50">
@@ -100,161 +122,93 @@
 				
 			
 			</Rectangle>
-
-
-		
 		</StackPanel>
 
-		<Panel Visibility="Collapsed">
-			<Rectangle Height="150" Width="330" Color="#fff" Alignment="TopCenter" CornerRadius="5" Y="90" X="-60">
-				<Rectangle Height="30" Color="#7C82F4" CornerRadius="15" Alignment="TopLeft" Width="150" Y="10" X="12" />
-				<OToggle Alignment="TopRight" Width="150" Y="10" X="-10" Height="30" />
-				<Rectangle Height="1.5" Color="Black" Y="50" />
-			</Rectangle>
+		
+		<Rectangle ux:Name="summaryUncon" Visibility="Collapsed" Color="#fff" Height="130" Width="330" Alignment="TopCenter" CornerRadius="5" X="-60">
 
-		</Panel>
+			<Rectangle Height="30" Color="#7C82F4" CornerRadius="15" Alignment="TopLeft" Width="150" Y="10" X="12" />
+			<OToggle Alignment="TopRight" Width="150" Y="10" X="-10" Height="30" />
+			<Rectangle Height="1" Color="Black" Y="50" />
+			<Grid RowCount="1" ColumnCount="5" Alignment="Center" Y="20" CellSpacing="10">
+				<Circle Width="50" Height="50">
+					<Stroke Width="1" Color="#040000" />
+					<Text Value="Edit" FontSize="11" Alignment="Bottom" Y="17" X="14" />
+				</Circle>
 
-		<Panel Visibility="Visible">
+				<Circle Width="50" Height="50">
+					<Stroke Width="1" Color="#040000" />
+					<Text Value="Remarks" FontSize="11" Alignment="Bottom" Y="17" X="2" />
+				</Circle>
+				<Circle Width="50" Height="50">
+					<Stroke Width="1" Color="#040000" />
+					<Text Value="Discount" FontSize="11" Alignment="Bottom" Y="17" X="3" />
+				</Circle>
+				<Circle Width="50" Height="50">
+					<Stroke Width="1" Color="#040000" />
+					<Text Value="Takeaway" FontSize="11" Alignment="Bottom" Y="17" X="1" TextWrapping="Wrap" />
+				</Circle>
+				<Delete />
+			</Grid>
+		</Rectangle>
+
+
+		<Panel ux:Name="summaryCon" Visibility="Collapsed">
 			<Rectangle Height="200" Width="250" Color="#fff" Alignment="TopCenter" CornerRadius="5" Y="90" X="-110">
 				<OToggle Width="150" Height="30" Alignment="TopCenter" Y="10" />
-				<Rectangle Height="1.5" Color="Black" Y="50" />
+				<Rectangle Height="1" Color="Black" Y="50" />
+					<Grid RowCount="2" ColumnCount="3" Alignment="Center" Y="20" CellSpacing="20">
+						<Circle Width="50" Height="50">
+							<Stroke Width="1" Color="#040000" />
+							<Text Value="Edit" FontSize="11" Alignment="Bottom" Y="17" X="14" />
+						</Circle>
+
+						<Circle Width="50" Height="50">
+							<Stroke Width="1" Color="#040000" />
+							<Text Value="Remarks" FontSize="11" Alignment="Bottom" Y="17" X="2" />
+						</Circle>
+						<Circle Width="50" Height="50">
+							<Stroke Width="1" Color="#040000" />
+							<Text Value="Discount" FontSize="11" Alignment="Bottom" Y="17" X="3" />
+						</Circle>
+						<Circle Width="50" Height="50">
+							<Stroke Width="1" Color="#040000" />
+							<Text Value="Takeaway" FontSize="11" Alignment="Bottom" Y="17" X="1" TextWrapping="Wrap" />
+						</Circle>
+						<Delete />
+						<Circle Width="50" Height="50">
+							<Stroke Width="1" Color="#040000" />
+							<Text Value="Takeaway" FontSize="11" Alignment="Bottom" Y="17" X="1" TextWrapping="Wrap" />
+						</Circle>
+					</Grid>
+				
 			</Rectangle>
 
 		</Panel>
 
 
 		<!-- Menu Screen -->
+		<Rectangle ux:Name="shadow" Color="Black" Width="67%" Alignment="Center" Height="100%" X="87" Opacity="0">
+			<Clicked>
+				<Set shadow.Opacity="0" />
+				<Set summaryUncon.Visibility="Collapsed" />
+				<Set summaryCon.Visibility="Collapsed" />
+			</Clicked>
+		</Rectangle>
 
-		<StackPanel Background="#3D393A" Width="67%" Alignment="Center" Height="100%" X="87" Opacity="1">
-
-			<Panel>
-				<Image File="Assets/10.5/Ordering Screen/icons8-back_filled.png" Alignment="Left" Height="40" Margin="5" Y="0" />
-				<Image File="Assets/DinoLogo/right-arrow.png" Alignment="Right" Height="40" Margin="5" Y="0" />
-				<Grid RowCount="2" ColumnCount="5" Width="80%" Y="-60">
-						<Rectangle Color="Black" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5" Opacity="1">
-							<RobotoText Color="White" Alignment="Center" Value="All" />
-							<Shadow Color="#00000029" Angle="268" Size="3" />
-							
-						</Rectangle>
-						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
-							<RobotoText Color="White" Alignment="Center" Value="Starter" />
-						</Rectangle>
-						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
-							<RobotoText Color="White" Alignment="Center" Value="Soup" />
-						</Rectangle>
-						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
-							<RobotoText Color="White" Alignment="Center" Value="Seafood" />
-							
-						</Rectangle>
-						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
-							<RobotoText Color="White" Alignment="Center" Value="Meat" />
-						</Rectangle>
-						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
-							<RobotoText Color="White" Alignment="Center" Value="Vegetable" />
-						</Rectangle>
-						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
-							<RobotoText Color="White" Alignment="Center" Value="Rice" />
-						</Rectangle>
-						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
-							<RobotoText Color="White" Alignment="Center" Value="Noodle" />
-						</Rectangle>
-						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
-							<RobotoText Color="White" Alignment="Center" Value="Drinks" />
-							
-						</Rectangle>
-						<Rectangle Color="#585657" Width="100" Height="40" CornerRadius="44" Alignment="Center" Y="40" Margin="0, 0, 0, 5">
-							<RobotoText Color="White" Alignment="Center" Value="Dessert" />
-						</Rectangle>
-				</Grid>
-			</Panel>
-			
-			<Panel Height="50%">
-				
-				<Grid RowCount="2" ColumnCount="4" Height="450" Width="660" Y="-50">
-
-					<Each Items="{menu}">
-						<Rectangle Color="#2B2728" Height="140" CornerRadius="2" Margin="5" Padding="2" Alignment="Top" Width="157" Y="45">
-							<StackPanel ItemSpacing="0">
-								<Panel>
-									<RobotoText Color="Black" Alignment="TopLeft" Value="M6002" FontSize="13" Font="Bold" Margin="3.8" />
-									<Rectangle Alignment="TopLeft" Color="White" Width="45" Height="20" CornerRadius="5" Opacity="0.5" Margin="3" />
-
-									<Rectangle Color="Black" Alignment="BottomRight" Width="43" Height="15" CornerRadius="2" Opacity="0.8" Margin="3">
-									<RobotoText Color="White" Alignment="Center" Value="$26.00" FontSize="12" />
-									</Rectangle>
-									<Image File="Assets/food.jpg" Alignment="TopCenter" Width="100%" />
-
-								</Panel>
-								<Panel Margin="5">
-									<RobotoText Color="#fff" Value="{data()}" FontSize="14" TextWrapping="Wrap" Alignment="CenterLeft" />
-								</Panel>					
-							</StackPanel>
-							
-							
-						</Rectangle>
-					</Each>
-					
-				</Grid>
-			</Panel>
-		
-			<Panel Height="20%">
-				<Image File="Assets/10.5/Ordering Screen/icons8-back_filled.png" Height="25" Alignment="Left" Margin="5" Y="14" X="20" />
-				<Image File="Assets/DinoLogo/right-arrow.png" Alignment="Right" Height="25" Margin="5" Y="15" X="-10" />
-				<Grid RowCount="1" ColumnCount="9" Width="80%">
-					<!--Panel Background="#d1d1f3" Width="50%" Height="90%" Y="15"-->
-					<Circle Height="30" Y="20">
-						<Text FontSize="20" TextColor="Gray" Value="1" TextAlignment="Center" Font="Bold" />
-					</Circle>
-					
-					
-				</Grid>
-
-			</Panel>
-			
-		</StackPanel>
+		<Menu />
 
 		<Panel ux:Name="sidebar" Width="8%" Height="660" Alignment="Right" Background="#3E4262">
 		</Panel>
 	</Panel>
 
-	<Circle ux:Class="Delete" Width="40" Height="40">
+	<Circle ux:Class="Delete" Width="50" Height="50">
+
+		<Stroke Width="1" Color="#040000" />
+		<Text Value="Delete" FontSize="11" Alignment="Bottom" Y="17" X="10" />
+		
 	</Circle>
 
-	<Panel ux:Class="OToggle" PrimaryColor="#fff" SecondaryColor="#7C82F4">
 	
-	<float4 ux:Property="PrimaryColor" />
-	<float4 ux:Property="SecondaryColor" />
-	<RobotoText ux:Name="queueNum" Alignment="CenterLeft" Value="Serve Now" FontSize="13" Color="{ReadProperty PrimaryColor}" X="7" />
-
-
-	<RobotoText ux:Name="reserveNum" Color="{ReadProperty SecondaryColor}" Alignment="CenterRight" FontSize="13" Value="Hold Item" Margin="2, 2, 2, 2" X="-11" />
-
-
-	<bool ux:Property="IsActive" />
-	<Rectangle ux:Name="handle" Margin="0, 0, 0, 0" Alignment="Left" Color="{ReadProperty SecondaryColor}" CornerRadius="25" Height="30" Width="50%" />
-	
-	<Rectangle ux:Name="background" Layer="Background" Color="{ReadProperty PrimaryColor}" CornerRadius="24" Height="30" Width="150" Alignment="Default">
-	<Stroke Color="#7C82F4" Width="1.7" />
-	</Rectangle>
-	
-	<Clicked>
-		<ToggleSwipeActive Target="swipe" />
-	</Clicked>
-	
-	<SwipeGesture ux:Name="swipe" Length="50" Direction="Right" Type="Active" IsActive="{Property IsActive}" />
-	<SwipingAnimation Source="swipe">
-		<Move Target="handle" X="75" />
-		<Change handle.Color="{ReadProperty SecondaryColor}" />
-		<Change queueNum.Color="{ReadProperty SecondaryColor}" />
-		<Change background.Color="{ReadProperty PrimaryColor}" />
-
-		<Change reserveNum.Color="{ReadProperty PrimaryColor}" />
-		
-	</SwipingAnimation>
-	
-	
-
-
-</Panel>
 	
 </App>
