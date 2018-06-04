@@ -14,7 +14,7 @@ public partial class UnconfirmOrder: Fuse.Controls.Panel
     {
         var temp = new global::Fuse.Controls.Text();
         temp_Value_inst = new Order_FuseControlsTextControl_Value_Property(temp, __selector0);
-        var temp1 = new global::Fuse.Reactive.DataFunction();
+        var temp1 = new global::Fuse.Reactive.Data("name");
         var temp2 = new global::Fuse.Controls.StackPanel();
         var temp3 = new global::Fuse.Controls.Panel();
         var temp4 = new global::Fuse.Controls.Text();

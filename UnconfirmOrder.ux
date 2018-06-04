@@ -1,5 +1,7 @@
-<Panel ux:Class="UnconfirmOrder" >
-	<StackPanel Background="#D5D4DA" Margin="0,0,0,2">
+<Panel ux:Class="UnconfirmOrder">
+	
+
+	<StackPanel Background="#D5D4DA" Height="80" Margin="0,0,0,2" Layer="Layout">
 		<Panel Alignment="Left" Width="20%">
 			<Text Value="1" FontSize="23" X="15" Y="8" Font="Bold" TextColor="#000" />
 		</Panel>				
@@ -12,7 +14,7 @@
 			
 		</Panel>
 							
-		<Panel Alignment="Right" Width="20%" X="-4" Margin="5, 5, 5, 5">
+		<Panel Alignment="Right" Width="20%" X="-4" Margin="5, 5, 5, 5" Y="-10">
 			<Text Value="$20.00" FontSize="15" Alignment="CenterLeft" Font="Bold" TextColor="#000" TextWrapping="Wrap" />
 		</Panel>
 		

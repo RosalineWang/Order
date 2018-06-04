@@ -45,6 +45,40 @@ sealed class Order_FuseReactiveEach_Items_Property: Uno.UX.Property<object>
     public override object Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Reactive.Each)obj).Items; }
     public override void Set(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Reactive.Each)obj).Items = v; }
 }
+sealed class Order_FuseElementsElement_Opacity_Property: Uno.UX.Property<float>
+{
+    [Uno.WeakReference] readonly Fuse.Elements.Element _obj;
+    public Order_FuseElementsElement_Opacity_Property(Fuse.Elements.Element obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
+    public override float Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Elements.Element)obj).Opacity; }
+    public override void Set(global::Uno.UX.PropertyObject obj, float v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Elements.Element)obj).SetOpacity(v, origin); }
+    public override bool SupportsOriginSetter { get { return true; } }
+}
+sealed class Order_FuseElementsElement_Visibility_Property: Uno.UX.Property<Fuse.Elements.Visibility>
+{
+    [Uno.WeakReference] readonly Fuse.Elements.Element _obj;
+    public Order_FuseElementsElement_Visibility_Property(Fuse.Elements.Element obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
+    public override Fuse.Elements.Visibility Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Elements.Element)obj).Visibility; }
+    public override void Set(global::Uno.UX.PropertyObject obj, Fuse.Elements.Visibility v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Elements.Element)obj).SetVisibility(v, origin); }
+    public override bool SupportsOriginSetter { get { return true; } }
+}
+sealed class Order_FuseElementsElement_Y_Property: Uno.UX.Property<Uno.UX.Size>
+{
+    [Uno.WeakReference] readonly Fuse.Elements.Element _obj;
+    public Order_FuseElementsElement_Y_Property(Fuse.Elements.Element obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
+    public override Uno.UX.Size Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Elements.Element)obj).Y; }
+    public override void Set(global::Uno.UX.PropertyObject obj, Uno.UX.Size v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Elements.Element)obj).Y = v; }
+}
+sealed class Order_FuseTriggersActionsSetUnoUXSize_Value_Property: Uno.UX.Property<Uno.UX.Size>
+{
+    [Uno.WeakReference] readonly Fuse.Triggers.Actions.Set<Uno.UX.Size> _obj;
+    public Order_FuseTriggersActionsSetUnoUXSize_Value_Property(Fuse.Triggers.Actions.Set<Uno.UX.Size> obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
+    public override Uno.UX.Size Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Triggers.Actions.Set<Uno.UX.Size>)obj).Value; }
+    public override void Set(global::Uno.UX.PropertyObject obj, Uno.UX.Size v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Triggers.Actions.Set<Uno.UX.Size>)obj).Value = v; }
+}
 sealed class Order_FuseControlsTextControl_Color_Property: Uno.UX.Property<float4>
 {
     [Uno.WeakReference] readonly Fuse.Controls.TextControl _obj;

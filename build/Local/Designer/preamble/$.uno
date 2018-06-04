@@ -13,7 +13,7 @@ namespace Outracks.Simulator
 		public GeneratedApplication()
 			: base(
 				new [] 
-				{new Uno.Net.IPEndPoint(Uno.Net.IPAddress.Parse("127.0.0.1"), 12124), new Uno.Net.IPEndPoint(Uno.Net.IPAddress.Parse("10.10.5.3"), 12124), new Uno.Net.IPEndPoint(Uno.Net.IPAddress.Parse("192.168.1.108"), 12124)},"/Users/smu/Desktop/DinoPOS/Order/Order.unoproj",new string[] 
+				{new Uno.Net.IPEndPoint(Uno.Net.IPAddress.Parse("127.0.0.1"), 12124), new Uno.Net.IPEndPoint(Uno.Net.IPAddress.Parse("192.168.1.112"), 12124)},"/Users/smu/Desktop/DinoPOS/Order/Order.unoproj",new string[] 
 				{ })
 		{
 			Runtime.Bundle.Initialize("Order");

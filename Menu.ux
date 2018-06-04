@@ -1,5 +1,69 @@
 <Panel ux:Class="Menu">
-<StackPanel Width="67%" Alignment="Center" Height="100%" X="87" Opacity="1" Background="#3E383A">
+	<JavaScript>
+	var Observable = require("FuseJS/Observable");
+	var title = Observable();
+	function change(args){
+		title.value = args.data;
+		
+	}
+	module.exports = {
+	    title,
+	    change
+
+    };
+
+</JavaScript>
+<Panel ux:Name="itemDetail" Visibility="Collapsed" Width="65%" Alignment="Center" Height="95%" X="87" Background="Black">
+
+	<Rectangle Alignment="Top" Height="10%" Color="#EEEEEE">
+		<RobotoText Value="{title}" FontSize="20" Alignment="CenterLeft" X="10" Color="Black" />
+	</Rectangle>
+	<Rectangle Alignment="Center" Height="75%" Width="100%" Color="#EEEEEE">
+			
+			<Panel Alignment="Left" Width="30%">
+				<StackPanel>
+					<Panel Height="60%">
+						<Image File="Assets/sushi.png" Y="-1" />
+					</Panel>
+					<Panel Height="40%">
+						<RobotoText Value="$32.00" FontSize="25" Font="Bold" Color="#6A78FC" TextWrapping="Wrap" Alignment="BottomRight" Y="180" X="-10" />
+					</Panel>
+				</StackPanel>
+				
+			</Panel>
+			<Panel Alignment="Right" Width="70%" Color="#fff">
+			</Panel>
+
+		
+	</Rectangle>
+
+	<Panel Height="14%" Alignment="Bottom">
+		
+			<Rectangle Width="15%" Height="60%" Color="#fff" CornerRadius="30" Alignment="CenterLeft" Y="7" X="5"/>
+			<Rectangle Width="15%" Height="60%" Color="#fff" CornerRadius="30" Alignment="CenterLeft"  X="120"  Y="7"/>
+			<Rectangle Width="10%" Height="60%" Color="Gray" CornerRadius="20" Alignment="CenterLeft"  X="240"  Y="7">
+				<RobotoText Value="-" FontSize="40" Color="#FFF" Font="Bold" Alignment="Center"/>
+			</Rectangle>
+			<Rectangle Width="10%" Height="60%" Color="#fff" Alignment="CenterLeft"  X="320"  Y="7">
+				<RobotoText Value="1" FontSize="25" Color="Black" Font="Bold" Alignment="Center"/>
+			</Rectangle>
+			<Rectangle Width="10%" Height="60%" Color="Gray" CornerRadius="20" Alignment="CenterLeft"  X="400"  Y="7" >
+				<RobotoText Value="+" FontSize="40" Color="#FFF" Font="Bold" Alignment="Center"/>
+			</Rectangle>
+			<Rectangle Width="25%" Height="60%" Color="#FD9526" CornerRadius="30" Alignment="CenterLeft"  X="480"  Y="7">
+				<RobotoText Value="Add" FontSize="25" Color="#FFF" Font="Bold" Alignment="Center"/>
+			</Rectangle>
+		
+	</Panel>
+			
+</Panel>
+<Rectangle ux:Name="shadowmenu" Height="100%" Width="100%" Color="Black" Opacity="0.546" Visibility="Collapsed">
+	<Clicked>
+		<Set shadowmenu.Visibility="Collapsed" />
+		<Set itemDetail.Visibility="Collapsed" />
+	</Clicked>
+</Rectangle>
+<StackPanel Width="67%" Alignment="Center" Height="100%" X="87" Opacity="1" Background="#3E383A" Layer="Underlay">
 
 			<Panel>
 				<Image File="Assets/10.5/Ordering Screen/icons8-back_filled.png" Alignment="Left" Height="40" Margin="5" Y="0" />
@@ -58,14 +122,22 @@
 									</Rectangle>
 									<Image File="Assets/food.jpg" Alignment="TopCenter" Width="100%" />
 
+
 								</Panel>
 								<Panel Margin="5">
-									<RobotoText Color="#fff" Value="{data()}" FontSize="14" TextWrapping="Wrap" Alignment="CenterLeft" />
+									<RobotoText Color="#fff" Value="{data()}" FontSize="14" TextWrapping="Wrap" Alignment="CenterLeft">
+										<Clicked>
+											<Set shadowmenu.Visibility="Visible" />
+											<Set itemDetail.Visibility="Visible" />
+											<Callback Handler="{change}" />
+										</Clicked>
+									</RobotoText>
 								</Panel>					
-							</StackPanel>
-							
+							</StackPanel>	
 							
 						</Rectangle>
+
+
 					</Each>
 					
 				</Grid>
@@ -86,4 +158,5 @@
 			</Panel>
 			
 		</StackPanel>
+		
 	</Panel>

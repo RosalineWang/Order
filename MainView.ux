@@ -7,27 +7,49 @@
 		var unconfirm = Observable();
 		unconfirm =[
 			{"name":"Beetroot Salad",
-			 "position":90},
+			 "position":220},
 			{"name":"Sushi platter",
-			 "position":180},
-			{"name":"Peking duck",
-			 "position":270}];
+			 "position":280}];
+		
 			 
 		var confirm = Observable();
 		confirm =[
 			{"name":"Honey-marinated",
-			 "position":20},
+			 "position":0,
+			 "remark":["Small"]},
 			{"name":"cod fillet",
-			 "position":100} ,
+			 "position": 80,
+			 "remark":["Large"]} ,
 			{"name":"Wagyu Beef",
-			 "position":170}];
+			 "position":160,
+			 "remark":""}];
 
 		var showUCSummary = Observable(false);
 		function check(args){
 			console.log(args.data['name']);
 		}
+		var remarks = Observable();
+		remarks=["Sauce on the side", "More Sauce", "Less Sauce","No Sauce", "Add Salt","Add Pepper","Add Balsamic","Add Olive Oil"];
+
+		var remarkList = Observable();
+		var allRemarks = Observable();
+		remarkList =["Special Arrangement","Urgent Order","Before Food","After Food"];
+		function product(){
+			remarkList = allRemarks;
+		}
+		function operation(){
+			remarkList =["Special Arrangement","Urgent Order","Before Food","After Food"];
+			console.log(remarkList +" ops");
+		}
+		function more(){
+			remarkList =["More Pepper","More Salt","More Sauce","More Chilli","More Vegetable"];
+		}
+		function addRemark(args){
+			console.log(args.data);
+			allRemarks.add(args.data);
+		}
 		/*
-		  fetch("http://159.65.129.238/dinopos/activetable/")
+		  fetch("http://159.65.129.238/dinopos/order/{id}/product")
 	        .then(function(response) {
 	        	return response.json(); })
 	        .then(function(responseObject) {
@@ -45,15 +67,251 @@
             menu:menu,
             unconfirm,
             confirm,
-            check
+            check,
+            remarks,
+            remarkList,
+            allRemarks,
+            operation,
+            product,
+            more,
+            addRemark
 
         };
 
 	</JavaScript>
 
-	
 	<Panel>
 		<!-- #4B50A4 #353894 #3D393A #5C5A5B #FB9336 #CED2F2 #D1D1F3-->
+		<Rectangle ux:Name="summaryUncon" Visibility="Collapsed" Color="#fff" Height="130" Width="330" Alignment="TopCenter" CornerRadius="5" X="-60">
+
+			<Rectangle Height="30" Color="#7C82F4" CornerRadius="15" Alignment="TopLeft" Width="150" Y="10" X="12" />
+			<Rectangle Color="#fff" Width="40" Height="40" Alignment="CenterLeft" Y="-6" Layer="Background">
+				<Rotation Degrees="45" />
+				</Rectangle>
+			<OToggle Alignment="TopRight" Width="150" Y="10" X="-10" Height="30" />
+			<Rectangle Height="1" Color="Black" Y="50" />
+			<Grid RowCount="1" ColumnCount="5" Alignment="Center" Y="20" CellSpacing="10">
+				<Circle Width="50" Height="50">
+					<Stroke Width="1" Color="#040000" />
+					<Text Value="Edit" FontSize="11" Alignment="Bottom" Y="17" X="14" />
+				</Circle>
+
+				<Circle Width="50" Height="50">
+					<Stroke Width="1" Color="#040000" />
+					<Text Value="Remarks" FontSize="11" Alignment="Bottom" Y="17" X="2" />
+				</Circle>
+				<Circle Width="50" Height="50">
+					<Stroke Width="1" Color="#040000" />
+					<Text Value="Discount" FontSize="11" Alignment="Bottom" Y="17" X="3" />
+				</Circle>
+				<Circle Width="50" Height="50">
+					<Stroke Width="1" Color="#040000" />
+					<Text Value="Takeaway" FontSize="11" Alignment="Bottom" Y="17" X="1" TextWrapping="Wrap" />
+				</Circle>
+				<Delete />
+			</Grid>
+		</Rectangle>
+
+
+		<Panel ux:Name="summaryCon" Visibility="Collapsed">
+			
+			<Rectangle Height="200" Width="250" Color="#fff" Alignment="TopCenter" CornerRadius="5" Y="90" X="-110">
+				<Rectangle Color="#fff" Width="40" Height="40" Alignment="CenterLeft" Y="-40" Layer="Background">
+				<Rotation Degrees="45" />
+				</Rectangle>
+				<OToggle Width="150" Height="30" Alignment="TopCenter" Y="10" />
+				<Rectangle Height="1" Color="Black" Y="50" />
+					<Grid RowCount="2" ColumnCount="3" Alignment="Center" Y="20" CellSpacing="20">
+						<Circle Width="50" Height="50">
+							<Stroke Width="1" Color="#040000" />
+							<Text Value="Edit" FontSize="11" Alignment="Bottom" Y="17" X="14" />
+						</Circle>
+
+						<Circle Width="50" Height="50">
+							<Stroke Width="1" Color="#040000" />
+							<Text Value="Remarks" FontSize="11" Alignment="Bottom" Y="17" X="2" />
+							<Clicked>
+								<Set summaryCon.Visibility="Collapsed" />
+								<Set remark.Visibility="Visible" />
+							</Clicked>
+						</Circle>
+						<Circle Width="50" Height="50">
+							<Stroke Width="1" Color="#040000" />
+							<Text Value="Discount" FontSize="11" Alignment="Bottom" Y="17" X="3" />
+						</Circle>
+						<Circle Width="50" Height="50">
+							<Stroke Width="1" Color="#040000" />
+							<Text Value="Takeaway" FontSize="11" Alignment="Bottom" Y="17" X="1" TextWrapping="Wrap" />
+						</Circle>
+						<Delete />
+						<Circle Width="50" Height="50">
+							<Stroke Width="1" Color="#040000" />
+							<Text Value="Takeaway" FontSize="11" Alignment="Bottom" Y="17" X="1" TextWrapping="Wrap" />
+						</Circle>
+					</Grid>
+				
+			</Rectangle>
+
+		</Panel>
+		<Panel ux:Name="remark" Visibility="Collapsed" Height="70%" Width="20%" Color="#fff" Alignment="TopCenter" Y="14" X="-140">
+			<StackPanel>
+				<Rectangle Color="#3E383A" Height="40">
+					<RobotoText Value="Remarks" Color="#fff" Alignment="CenterLeft" X="30" />
+				</Rectangle>
+			
+				<Each Items="{remarks}">
+					<Panel X="30" Height="40">
+					<RobotoText Color="Black" Value="{data()}" FontSize="15" Alignment="Center" />
+
+					</Panel>
+					<Rectangle Height="1" Color="#e8e8ea" Width="90%" />
+
+				</Each>
+				<Rectangle Height="2" Color="#3E383A" />
+				<Circle Width="50" Height="50" Y="10" Alignment="Center"> 
+					<Stroke Width="1" Color="#040000" />
+					<Text Value="See All" FontSize="11" Alignment="Bottom" Y="17" X="9" />
+					<Clicked>
+						<Set remark.Visibility="Collapsed" />
+						<Set allRemarks.Visibility="Visible" />
+					</Clicked>
+				</Circle>
+			</StackPanel>
+
+		</Panel>
+
+		<Panel ux:Name="allRemarks" Height="450" Width="600" Visibility="Collapsed" Alignment="CenterRight" Background="#fff" X="-130">
+
+			<Rectangle Color="#3E383A" Height="40" Alignment="Top">
+				<RobotoText Value="Remarks" Color="#fff" Alignment="CenterLeft" X="30" />
+			</Rectangle>
+
+			<DockPanel>
+				<Panel Dock="Left" Width="30%" Height="80%">
+					<StackPanel ItemSpacing="5">
+						<Rectangle ux:Name="button1" Width="80%" Height="30" CornerRadius="15" Alignment="Left" X="15">
+							<RobotoText Value="Salad" ux:Name="name1" Alignment="CenterLeft" X="5" Clicked="{product}" />
+							<Clicked>
+								<Set button1.Color="#303591" />
+								<Set name1.Color="#fff" />
+
+							</Clicked>
+						</Rectangle>
+						<Rectangle Height="1" Color="#e8e8ea" Width="90%" />
+						<Rectangle ux:Name="button2" Width="80%" Height="30" CornerRadius="15" Alignment="Left" X="15">
+							<RobotoText Value="OPERATIONS" ux:Name="name2" Alignment="CenterLeft" X="5" Clicked="{operation}" />
+							<Clicked>
+								<Set button2.Color="#303591" />
+								<Set name2.Color="#fff" />
+							</Clicked>
+						</Rectangle>
+						<Rectangle Height="1" Color="#e8e8ea" Width="90%" />
+						<Rectangle ux:Name="button3" Width="80%" Height="30" CornerRadius="15" Alignment="Left" X="15">
+							<RobotoText Value="MORE" ux:Name="name3" Alignment="CenterLeft" X="5" />
+							<Clicked>
+								<Set button3.Color="#303591" />
+								<Set name3.Color="#fff" />
+								<Callback Handler="{more}" />
+							</Clicked>
+						</Rectangle>
+						<Rectangle Height="1" Color="#e8e8ea" Width="90%" />
+						<Rectangle ux:Name="button4" Width="80%" Height="30" CornerRadius="15" Alignment="Left" X="15">
+							<RobotoText Value="LESS" ux:Name="name4" Alignment="CenterLeft" X="5" />
+							<Clicked>
+								<Set button4.Color="#303591" />
+								<Set name4.Color="#fff" />
+							</Clicked>
+						</Rectangle>
+						<Rectangle Height="1" Color="#e8e8ea" Width="90%" />
+						<Rectangle ux:Name="button5" Width="80%" Height="30" CornerRadius="15" Alignment="Left" X="15">
+							<RobotoText Value="NO" ux:Name="name5" Alignment="CenterLeft" X="5" />
+							<Clicked>
+								<Set button5.Color="#303591" />
+								<Set name5.Color="#fff" />
+							</Clicked>
+						</Rectangle>
+						<Rectangle Height="1" Color="#e8e8ea" Width="90%" />
+						<Rectangle ux:Name="button6" Width="80%" Height="30" CornerRadius="15" Alignment="Left" X="15">
+							<RobotoText Value="ADD" ux:Name="name6" Alignment="CenterLeft" X="5" />
+							<Clicked>
+								<Set button6.Color="#303591" />
+								<Set name6.Color="#fff" />
+							</Clicked>
+						</Rectangle>
+						<Rectangle Height="1" Color="#e8e8ea" Width="90%" />
+						<Rectangle ux:Name="button7" Width="80%" Height="30" CornerRadius="15" Alignment="Left" X="15">
+							<RobotoText Value="CHANGE" ux:Name="name7" Alignment="CenterLeft" X="5" />
+							<Clicked>
+								<Set button7.Color="#303591" />
+								<Set name7.Color="#fff" />
+							</Clicked>
+						</Rectangle>
+						<Rectangle Height="1" Color="#e8e8ea" Width="90%" />
+						<Rectangle ux:Name="button8" Width="80%" Height="30" CornerRadius="15" Alignment="Left" X="15">
+							<RobotoText Value="NOODLES" ux:Name="name8" Alignment="CenterLeft" X="5" />
+							<Clicked>
+								<Set button8.Color="#303591" />
+								<Set name8.Color="#fff" />
+							</Clicked>
+						</Rectangle>
+						
+						
+					</StackPanel>
+					<Rectangle Height="2" Width="100%" Color="#3E383A" Alignment="Bottom" Y="-33.5" />
+
+				</Panel>
+				<Rectangle Width="2" Height="80%" Color="#3E383A" Alignment="Top" Y="11" />
+				<Panel Dock="Right" Width="70%" Height="65%">
+					<Rectangle Height="2" Width="100%" Color="#3E383A" Alignment="Bottom" />
+					<Grid ColumnCount="2" RowCount="8">
+						<Each Items="{remarkList}">
+							<RobotoText Value="{data()}" Alignment="CenterLeft" X="15" Clicked="{addRemark}" />
+							<!--Rectangle Height="1" Color="#e8e8ea" Width="90%" Alignment="Bottom"/-->
+						</Each>
+
+					</Grid>	
+
+				</Panel>
+				<Circle Width="50" Height="50" Dock="Bottom" Y="-20" Alignment="Left" X="-110">
+					<Stroke Width="1" Color="#040000" />
+					<Text Value="Custom" FontSize="11" Alignment="Bottom" Y="17" X="6" />
+				</Circle>
+				
+			</DockPanel>
+
+		</Panel>
+
+
+		<Rectangle ux:Name="shadow" Color="Black" Width="67%" Alignment="Center" Height="100%" X="87" Opacity="0.733" Visibility="Collapsed" Layer="Layout">
+			<Clicked>
+				<Set shadow.Visibility="Collapsed" />
+				<Set summaryUncon.Visibility="Collapsed" />
+				<Set summaryCon.Visibility="Collapsed" />
+				<Set remark.Visibility="Collapsed" />
+				<Set allRemarks.Visibility="Collapsed" />
+			</Clicked>
+		</Rectangle>
+
+		<Menu />
+
+
+
+		<Panel>
+			<Rectangle Alignment="BottomLeft" Background="#FFF" Height="65" Width="25%" Y="8">
+
+				<Button Background="Gray" Height="50">
+					<Text ux:Name="orderconfirm" Color="#fff" Value="Confirm Order" Alignment="Center" FontSize="19" Font="Bold" />
+					<WhileHovering>
+						<Change orderconfirm.Color="#353894" />
+					</WhileHovering>
+				</Button>
+				<Rectangle Color="#fff" Height="60" Width="40" CornerRadius="40" Alignment="TopLeft" Y="-26" Layer="Background" Margin="0, 0, 0, 0" Padding="0, 0, 0, 0">
+					<Shadow Color="#00000029" Angle="267" Size="3" />
+				</Rectangle>
+				<Shadow Color="#00000029" Angle="234" Size="3" />
+				
+			
+			</Rectangle>
 		<StackPanel Width="25%" Alignment="Left" Background="#E6E5EB">
 			<Panel>
 
@@ -81,126 +339,49 @@
 				<Text Value="1:15pm" FontSize="15" TextColor="#353894" Alignment="Right" X="-25" Font="Bold" />
 				<Shadow Color="#00000056" />	
 			</Panel>
+
+			<!-- separate ux parts -->
 			
 			<ScrollView>
 			<StackPanel ux:Name="itemlist" Width="100%" Height="465" Background="#E6E5EB" Margin="0, 0, 0, 30">
-				
-				<!--Each Items="{unconfirm}">
-					<UnconfirmOrder>
-						<Clicked>
-						<Set shadow.Opacity="0.733" />
-						<Set summaryUncon.Visibility="Visible" Delay="0.1" />
-						<Set summaryUncon.Y="{position}" />
-						
-						</Clicked>
-					</UnconfirmOrder>	
-				</Each-->
 				<Each Items="{confirm}">
 					<ConfirmOrder>
 						<Clicked>
-							<Set shadow.Opacity="0.733" />
+							<Set shadow.Visibility="Visible" />
 							<Set summaryCon.Visibility="Visible" Delay="0.1" />
 							<Set summaryCon.Y="{position}" />
+							<Set summaryUncon.Visibility="Collapsed" />
+				
 						</Clicked>
 					</ConfirmOrder>
 				</Each>
+				
+				<Each Items="{unconfirm}">
+					<UnconfirmOrder>
+						<Clicked>
+						<Set shadow.Visibility="Visible" />
+						<Set summaryUncon.Visibility="Visible" Delay="0.1" />
+						<Set summaryUncon.Y="{position}" />
+						<Set summaryCon.Visibility="Collapsed" />
+						</Clicked>
+					</UnconfirmOrder>	
+				</Each>
+				
 		
 			</StackPanel>
 			</ScrollView>
-			<Rectangle Alignment="Bottom" Background="#FFF" Height="65" Y="8">
-
-				<Button Background="Gray" Height="50">
-					<Text ux:Name="orderconfirm" Color="#fff" Value="Confirm Order" Alignment="Center" FontSize="19" Font="Bold" />
-					<WhileHovering>
-						<Change orderconfirm.Color="#353894" />
-					</WhileHovering>
-				</Button>
-				<Rectangle Color="#fff" Height="60" Width="40" CornerRadius="40" Alignment="TopLeft" Y="-26" Layer="Background" Margin="0, 0, 0, 0" Padding="0, 0, 0, 0">
-					<Shadow Color="#00000029" Angle="267" Size="3" />
-				</Rectangle>
-				<Shadow Color="#00000029" Angle="234" Size="3" />
-				
 			
-			</Rectangle>
 		</StackPanel>
-
 		
-		<Rectangle ux:Name="summaryUncon" Visibility="Collapsed" Color="#fff" Height="130" Width="330" Alignment="TopCenter" CornerRadius="5" X="-60">
-
-			<Rectangle Height="30" Color="#7C82F4" CornerRadius="15" Alignment="TopLeft" Width="150" Y="10" X="12" />
-			<OToggle Alignment="TopRight" Width="150" Y="10" X="-10" Height="30" />
-			<Rectangle Height="1" Color="Black" Y="50" />
-			<Grid RowCount="1" ColumnCount="5" Alignment="Center" Y="20" CellSpacing="10">
-				<Circle Width="50" Height="50">
-					<Stroke Width="1" Color="#040000" />
-					<Text Value="Edit" FontSize="11" Alignment="Bottom" Y="17" X="14" />
-				</Circle>
-
-				<Circle Width="50" Height="50">
-					<Stroke Width="1" Color="#040000" />
-					<Text Value="Remarks" FontSize="11" Alignment="Bottom" Y="17" X="2" />
-				</Circle>
-				<Circle Width="50" Height="50">
-					<Stroke Width="1" Color="#040000" />
-					<Text Value="Discount" FontSize="11" Alignment="Bottom" Y="17" X="3" />
-				</Circle>
-				<Circle Width="50" Height="50">
-					<Stroke Width="1" Color="#040000" />
-					<Text Value="Takeaway" FontSize="11" Alignment="Bottom" Y="17" X="1" TextWrapping="Wrap" />
-				</Circle>
-				<Delete />
-			</Grid>
-		</Rectangle>
-
-
-		<Panel ux:Name="summaryCon" Visibility="Collapsed">
-			<Rectangle Height="200" Width="250" Color="#fff" Alignment="TopCenter" CornerRadius="5" Y="90" X="-110">
-				<OToggle Width="150" Height="30" Alignment="TopCenter" Y="10" />
-				<Rectangle Height="1" Color="Black" Y="50" />
-					<Grid RowCount="2" ColumnCount="3" Alignment="Center" Y="20" CellSpacing="20">
-						<Circle Width="50" Height="50">
-							<Stroke Width="1" Color="#040000" />
-							<Text Value="Edit" FontSize="11" Alignment="Bottom" Y="17" X="14" />
-						</Circle>
-
-						<Circle Width="50" Height="50">
-							<Stroke Width="1" Color="#040000" />
-							<Text Value="Remarks" FontSize="11" Alignment="Bottom" Y="17" X="2" />
-						</Circle>
-						<Circle Width="50" Height="50">
-							<Stroke Width="1" Color="#040000" />
-							<Text Value="Discount" FontSize="11" Alignment="Bottom" Y="17" X="3" />
-						</Circle>
-						<Circle Width="50" Height="50">
-							<Stroke Width="1" Color="#040000" />
-							<Text Value="Takeaway" FontSize="11" Alignment="Bottom" Y="17" X="1" TextWrapping="Wrap" />
-						</Circle>
-						<Delete />
-						<Circle Width="50" Height="50">
-							<Stroke Width="1" Color="#040000" />
-							<Text Value="Takeaway" FontSize="11" Alignment="Bottom" Y="17" X="1" TextWrapping="Wrap" />
-						</Circle>
-					</Grid>
-				
-			</Rectangle>
-
 		</Panel>
-
-
-		<!-- Menu Screen -->
-		<Rectangle ux:Name="shadow" Color="Black" Width="67%" Alignment="Center" Height="100%" X="87" Opacity="0">
-			<Clicked>
-				<Set shadow.Opacity="0" />
-				<Set summaryUncon.Visibility="Collapsed" />
-				<Set summaryCon.Visibility="Collapsed" />
-			</Clicked>
-		</Rectangle>
-
-		<Menu />
+		
+		
+		
 
 		<Panel ux:Name="sidebar" Width="8%" Height="660" Alignment="Right" Background="#3E4262">
 		</Panel>
 	</Panel>
+
 
 	<Circle ux:Class="Delete" Width="50" Height="50">
 

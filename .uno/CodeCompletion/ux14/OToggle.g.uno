@@ -132,7 +132,7 @@ public partial class OToggle: Fuse.Controls.Panel
         reserveNum.FontSize = 13f;
         reserveNum.Alignment = Fuse.Elements.Alignment.CenterRight;
         reserveNum.Margin = float4(2f, 2f, 2f, 2f);
-        reserveNum.X = new Uno.UX.Size(-11f, Uno.UX.Unit.Unspecified);
+        reserveNum.X = new Uno.UX.Size(-8f, Uno.UX.Unit.Unspecified);
         reserveNum.Name = __selector4;
         reserveNum.Bindings.Add(temp23);
         handle.CornerRadius = float4(25f, 25f, 25f, 25f);
