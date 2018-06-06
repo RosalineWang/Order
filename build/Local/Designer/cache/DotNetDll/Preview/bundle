@@ -57,4 +57,6 @@ Polyfills.Window:js/EventTarget.js:eventtarget-c2230a48.js:js/fetch.js:fetch-bb9
 FuseJS
 Outracks.Simulator.Common.Uno
 Fuse.Preview.Core:fight.png:fight-1537455b.png
-Order:Assets/food.jpg:food-9e1dc99d.jpg:Assets/10.5/Ordering Screen/icons8-back_filled.png:icons8-back_filled-867a1c06.png:Assets/DinoLogo/right-arrow.png:right-arrow-7b42dfd3.png:Fonts/Roboto.ttf:roboto-0338e87c.ttf:Assets/Dinologo/add-user.png:add-user-6cf15f34.png
+foreignhelpers_include
+FuseSQLiteLib
+Order:Assets/food.jpg:food-9e1dc99d.jpg:Assets/sushi.png:sushi-7fbdb527.png:Assets/10.5/Ordering Screen/icons8-back_filled.png:icons8-back_filled-867a1c06.png:Assets/DinoLogo/right-arrow.png:right-arrow-7b42dfd3.png:MainView.js:mainview-cb8c4a65.js:Assets/Dinologo/add-user.png:add-user-6cf15f34.png:Fonts/Roboto.ttf:roboto-0338e87c.ttf:MainView.js:mainview-cb8c4a65.js:Assets/cross.png:cross-113575d5.png:Assets/edit.png:edit-75758207.png:Assets/man-user.png:man-user-2fe731b5.png:Assets/ring.png:ring-293b0321.png:Assets/sushi.png:sushi-7fbdb527.png

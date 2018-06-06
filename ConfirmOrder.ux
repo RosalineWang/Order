@@ -1,26 +1,2 @@
-<Panel ux:Class="ConfirmOrder" >
-	
-	<StackPanel Background="#fff" Margin="0,0,0,2" Height="80">
-		<Panel Alignment="Left" Width="20%">
-			<Text Value="1" FontSize="23" X="15" Y="8" Font="Bold" TextColor="#000" />
-		</Panel>				
-			
-		<Panel Alignment="Center" Width="60%" Y="-15">
-			<StackPanel Y="-3">
-				<Text Value="{name}" FontSize="16" TextWrapping="Wrap" Font="Bold" TextColor="#000" />
-				<Each Items="{remark}">
-					<Text Value="{data()}" FontSize="13" TextWrapping="Wrap" X="10" Color="#303591"/>
-				</Each>
-				
-			</StackPanel>
-	
-			
-		</Panel>
-							
-		<Panel Alignment="Right" Width="20%" Margin="5, 5, 5, 5" Y="-10">
-			<Text Value="$20.00" FontSize="15" Alignment="CenterLeft" Font="Bold" TextColor="#000" TextWrapping="Wrap" Margin="0, 0, 0, 0" />
-		</Panel>
-		
-	</StackPanel>
-	
+<Panel>
 </Panel>

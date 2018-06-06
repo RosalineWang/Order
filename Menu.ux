@@ -13,7 +13,7 @@
     };
 
 </JavaScript>
-<Panel ux:Name="itemDetail" Visibility="Collapsed" Width="65%" Alignment="Center" Height="95%" X="87" Background="Black">
+<Panel ux:Name="itemDetail" Visibility="Collapsed" Width="64%" Alignment="Center" Height="95%" X="87" Background="Black">
 
 	<Rectangle Alignment="Top" Height="10%" Color="#EEEEEE">
 		<RobotoText Value="{title}" FontSize="20" Alignment="CenterLeft" X="10" Color="Black" />
@@ -32,6 +32,99 @@
 				
 			</Panel>
 			<Panel Alignment="Right" Width="70%" Color="#fff">
+				<ScrollView>
+				<StackPanel Margin="15,15,15,15">
+					<RobotoText Value="Size" Font="Bold" FontSize="18" X="7" />
+					<Panel>
+						<Rectangle Width="205" Height="50" Color="#fff" Alignment="Left" CornerRadius="5">
+							<RobotoText Value="Small" FontSize="15" Color="Black" Margin="6,6,0,0" />
+							<Shadow Angle="120" Size="3" />
+							<Stroke Color="#0000000E" Width="2" />
+						</Rectangle>
+						<Rectangle Width="205" Height="50" Color="#fff" Alignment="Right" CornerRadius="5">
+							<RobotoText Value="Medium" FontSize="15" Color="Black" Margin="6,6,0,0" />
+							<RobotoText Value="+ $3.00" FontSize="15" Color="Black" Margin="0,6,10,0" Alignment="Right" />
+							<Shadow Angle="120" Size="3" />
+							<Stroke Color="#0000000E" Width="2" />
+						</Rectangle>
+					</Panel>
+					<Rectangle Width="205" Height="50" Color="#fff" Alignment="Left" CornerRadius="5" Y="10">
+						<RobotoText Value="Large" FontSize="15" Color="Black" Margin="6,6,0,0" />
+						<RobotoText Value="+ $5.00" FontSize="15" Color="Black" Margin="0,6,10,0" Alignment="Right" />
+						<Shadow Angle="120" Size="3" />
+						<Stroke Color="#0000000E" Width="2" />
+					</Rectangle>
+					<RobotoText Value="Sides" Font="Bold" FontSize="18" X="7" Y="20" />
+					<Panel Y="24">
+						<Rectangle Width="205" Height="50" Color="#fff" Alignment="Left" CornerRadius="5">
+							<RobotoText Value="French Fries" FontSize="15" Color="Black" Margin="6,6,0,0" />
+							<Shadow Angle="120" Size="3" />
+							<Stroke Color="#0000000E" Width="2" />
+						</Rectangle>
+						<Rectangle Width="205" Height="50" Color="#fff" Alignment="Right" CornerRadius="5">
+							<RobotoText Value="Potato Skins" FontSize="15" Color="Black" Margin="6,6,0,0" />
+							<RobotoText Value="+ $3.00" FontSize="15" Color="Black" Margin="0,6,10,0" Alignment="Right" />
+							<Shadow Angle="120" Size="3" />
+							<Stroke Color="#0000000E" Width="2" />
+						</Rectangle>
+					</Panel>
+					<RobotoText Value="Add Ons" Font="Bold" FontSize="18" X="7" Y="35" />
+					<Panel Y="40">
+						<Rectangle Width="205" Height="70" Color="#fff" Alignment="Left" CornerRadius="5">
+							<RobotoText Value="Tomatoes" FontSize="15" Color="Black" Margin="6,6,0,0" />
+							<RobotoText Value="+ $1.00" FontSize="15" Color="Black" Margin="0,6,10,0" Alignment="Right" />
+							<Rectangle Alignment="Center" Height="35" Width="180" Color="#EEEEEE" CornerRadius="15" Y="10">
+							</Rectangle>
+							<Shadow Angle="120" Size="3" />
+							<Stroke Color="#0000000E" Width="2" />
+						</Rectangle>
+						<Rectangle Width="205" Height="70" Color="#fff" Alignment="Right" CornerRadius="5">
+							<RobotoText Value="Cucumber" FontSize="15" Color="Black" Margin="6,6,0,0" />
+							<RobotoText Value="+ $1.00" FontSize="15" Color="Black" Margin="0,6,10,0" Alignment="Right" />
+							<Rectangle Alignment="Center" Height="35" Width="180" Color="#EEEEEE" CornerRadius="15" Y="10">
+							</Rectangle>
+							<Shadow Angle="120" Size="3" />
+							<Stroke Color="#0000000E" Width="2" />
+						</Rectangle>
+					</Panel>
+					<Panel Y="55">
+						<Rectangle Width="205" Height="70" Color="#fff" Alignment="Left" CornerRadius="5">
+							<RobotoText Value="Tomatoes" FontSize="15" Color="Black" Margin="6,6,0,0" />
+							<RobotoText Value="+ $1.00" FontSize="15" Color="Black" Margin="0,6,10,0" Alignment="Right" />
+							<Rectangle Alignment="Center" Height="35" Width="180" Color="#EEEEEE" CornerRadius="15" Y="10">
+							</Rectangle>
+							<Shadow Angle="120" Size="3" />
+							<Stroke Color="#0000000E" Width="2" />
+						</Rectangle>
+						<Rectangle Width="205" Height="70" Color="#fff" Alignment="Right" CornerRadius="5">
+							<RobotoText Value="Cucumber" FontSize="15" Color="Black" Margin="6,6,0,0" />
+							<RobotoText Value="+ $1.00" FontSize="15" Color="Black" Margin="0,6,10,0" Alignment="Right" />
+							<Rectangle Alignment="Center" Height="35" Width="180" Color="#EEEEEE" CornerRadius="15" Y="10">
+							</Rectangle>
+							<Shadow Angle="120" Size="3" />
+							<Stroke Color="#0000000E" Width="2" />
+						</Rectangle>
+					</Panel>
+					<Panel Y="75">
+						<Rectangle Width="205" Height="70" Color="#fff" Alignment="Left" CornerRadius="5">
+							<RobotoText Value="Egg" FontSize="15" Color="Black" Margin="6,6,0,0" />
+							<RobotoText Value="+ $1.00" FontSize="15" Color="Black" Margin="0,6,10,0" Alignment="Right" />
+							<Rectangle Alignment="Center" Height="35" Width="180" Color="#EEEEEE" CornerRadius="15" Y="10">
+							</Rectangle>
+							<Shadow Angle="120" Size="3" />
+							<Stroke Color="#0000000E" Width="2" />
+						</Rectangle>
+						<Rectangle Width="205" Height="70" Color="#fff" Alignment="Right" CornerRadius="5">
+							<RobotoText Value="Cucumber" FontSize="15" Color="Black" Margin="6,6,0,0" />
+							<RobotoText Value="+ $1.00" FontSize="15" Color="Black" Margin="0,6,10,0" Alignment="Right" />
+							<Rectangle Alignment="Center" Height="35" Width="180" Color="#EEEEEE" CornerRadius="15" Y="10">
+							</Rectangle>
+							<Shadow Angle="120" Size="3" />
+							<Stroke Color="#0000000E" Width="2" />
+						</Rectangle>
+					</Panel>
+				</StackPanel>
+			</ScrollView>
 			</Panel>
 
 		
@@ -39,19 +132,32 @@
 
 	<Panel Height="14%" Alignment="Bottom">
 		
-			<Rectangle Width="15%" Height="60%" Color="#fff" CornerRadius="30" Alignment="CenterLeft" Y="7" X="5"/>
-			<Rectangle Width="15%" Height="60%" Color="#fff" CornerRadius="30" Alignment="CenterLeft"  X="120"  Y="7"/>
-			<Rectangle Width="10%" Height="60%" Color="Gray" CornerRadius="20" Alignment="CenterLeft"  X="240"  Y="7">
-				<RobotoText Value="-" FontSize="40" Color="#FFF" Font="Bold" Alignment="Center"/>
+			<Rectangle Width="15%" Height="60%" Color="#fff" CornerRadius="30" Alignment="CenterLeft" Y="7" X="5" >
+				<Grid RowCount="2" ColumnCount="1" Alignment="Center" X="9" >
+					<RobotoText Value="Add" FontSize="12" Color="Black"/>
+					<RobotoText Value="Remarks" FontSize="12" Color="Black"/>
+				</Grid>
+				
+
 			</Rectangle>
-			<Rectangle Width="10%" Height="60%" Color="#fff" Alignment="CenterLeft"  X="320"  Y="7">
-				<RobotoText Value="1" FontSize="25" Color="Black" Font="Bold" Alignment="Center"/>
+			<Rectangle Width="15%" Height="60%" Color="#fff" CornerRadius="30" Alignment="CenterLeft" X="120" Y="7" >
+				<Grid RowCount="2" ColumnCount="1" Alignment="Center" X="9" >
+					<RobotoText Value="Take" FontSize="12" Color="Black"/>
+					<RobotoText Value="Away" FontSize="12" Color="Black"/>
+				</Grid>
 			</Rectangle>
-			<Rectangle Width="10%" Height="60%" Color="Gray" CornerRadius="20" Alignment="CenterLeft"  X="400"  Y="7" >
-				<RobotoText Value="+" FontSize="40" Color="#FFF" Font="Bold" Alignment="Center"/>
+
+			<Rectangle Width="10%" Height="60%" Color="Gray" CornerRadius="20" Alignment="CenterLeft" X="240" Y="7">
+				<RobotoText Value="-" FontSize="40" Color="#FFF" Font="Bold" Alignment="Center" />
 			</Rectangle>
-			<Rectangle Width="25%" Height="60%" Color="#FD9526" CornerRadius="30" Alignment="CenterLeft"  X="480"  Y="7">
-				<RobotoText Value="Add" FontSize="25" Color="#FFF" Font="Bold" Alignment="Center"/>
+			<Rectangle Width="10%" Height="60%" Color="#fff" Alignment="CenterLeft" X="320" Y="7">
+				<RobotoText Value="1" FontSize="25" Color="Black" Font="Bold" Alignment="Center" />
+			</Rectangle>
+			<Rectangle Width="10%" Height="60%" Color="Gray" CornerRadius="20" Alignment="CenterLeft" X="400" Y="7">
+				<RobotoText Value="+" FontSize="40" Color="#FFF" Font="Bold" Alignment="Center" />
+			</Rectangle>
+			<Rectangle Width="25%" Height="60%" Color="#FD9526" CornerRadius="30" Alignment="CenterLeft" X="480" Y="7">
+				<RobotoText Value="Add" FontSize="25" Color="#FFF" Font="Bold" Alignment="Center" />
 			</Rectangle>
 		
 	</Panel>

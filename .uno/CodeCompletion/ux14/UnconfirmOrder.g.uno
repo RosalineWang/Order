@@ -25,7 +25,9 @@ public partial class UnconfirmOrder: Fuse.Controls.Panel
         var temp9 = new global::Fuse.Controls.Panel();
         var temp10 = new global::Fuse.Controls.Text();
         var temp11 = new global::Fuse.Drawing.StaticSolidColor(float4(0.8352941f, 0.8313726f, 0.854902f, 1f));
+        temp2.Height = new Uno.UX.Size(80f, Uno.UX.Unit.Unspecified);
         temp2.Margin = float4(0f, 0f, 0f, 2f);
+        temp2.Layer = Fuse.Layer.Layout;
         temp2.Background = temp11;
         temp2.Children.Add(temp3);
         temp2.Children.Add(temp5);
@@ -58,6 +60,7 @@ public partial class UnconfirmOrder: Fuse.Controls.Panel
         temp9.Alignment = Fuse.Elements.Alignment.Right;
         temp9.Margin = float4(5f, 5f, 5f, 5f);
         temp9.X = new Uno.UX.Size(-4f, Uno.UX.Unit.Unspecified);
+        temp9.Y = new Uno.UX.Size(-10f, Uno.UX.Unit.Unspecified);
         temp9.Children.Add(temp10);
         temp10.Value = "$20.00";
         temp10.TextWrapping = Fuse.Controls.TextWrapping.Wrap;

@@ -1,84 +1,6 @@
 <App Background="#fff">
-	<JavaScript>
-		var Observable = require("FuseJS/Observable");
-
-		var menu = Observable();
-		menu =["Beetroot Salad","Sushi platter","Peking duck","Honey-marinated cod fillet","Wagyu Beef","Fried Rice","Sakura Sake Cocktail Jelly","Beetroot Salad","Sushi platter","Peking duck","Honey-marinated cod fillet","Wagyu Beef"];
-		var unconfirm = Observable();
-		unconfirm =[
-			{"name":"Beetroot Salad",
-			 "position":220},
-			{"name":"Sushi platter",
-			 "position":280}];
-		
-			 
-		var confirm = Observable();
-		confirm =[
-			{"name":"Honey-marinated",
-			 "position":0,
-			 "remark":["Small"]},
-			{"name":"cod fillet",
-			 "position": 80,
-			 "remark":["Large"]} ,
-			{"name":"Wagyu Beef",
-			 "position":160,
-			 "remark":""}];
-
-		var showUCSummary = Observable(false);
-		function check(args){
-			console.log(args.data['name']);
-		}
-		var remarks = Observable();
-		remarks=["Sauce on the side", "More Sauce", "Less Sauce","No Sauce", "Add Salt","Add Pepper","Add Balsamic","Add Olive Oil"];
-
-		var remarkList = Observable();
-		var allRemarks = Observable();
-		remarkList =["Special Arrangement","Urgent Order","Before Food","After Food"];
-		function product(){
-			remarkList = allRemarks;
-		}
-		function operation(){
-			remarkList =["Special Arrangement","Urgent Order","Before Food","After Food"];
-			console.log(remarkList +" ops");
-		}
-		function more(){
-			remarkList =["More Pepper","More Salt","More Sauce","More Chilli","More Vegetable"];
-		}
-		function addRemark(args){
-			console.log(args.data);
-			allRemarks.add(args.data);
-		}
-		/*
-		  fetch("http://159.65.129.238/dinopos/order/{id}/product")
-	        .then(function(response) {
-	        	return response.json(); })
-	        .then(function(responseObject) {
-	            for (var i in responseObject) {
-	            	responseObject[i]["color"] = "#fff";
-	            	tables.add(responseObject[i]);
-	            }
-	        })
-	         .catch(function(err) {
-			        console.log('Error');
-			        console.log(JSON.stringify(err));
-			    });*/
-
-		module.exports = {
-            menu:menu,
-            unconfirm,
-            confirm,
-            check,
-            remarks,
-            remarkList,
-            allRemarks,
-            operation,
-            product,
-            more,
-            addRemark
-
-        };
-
-	</JavaScript>
+	<JavaScript File="MainView.js" />
+	<SQLite ux:Global="SQLite" />
 
 	<Panel>
 		<!-- #4B50A4 #353894 #3D393A #5C5A5B #FB9336 #CED2F2 #D1D1F3-->
@@ -161,7 +83,7 @@
 			
 				<Each Items="{remarks}">
 					<Panel X="30" Height="40">
-					<RobotoText Color="Black" Value="{data()}" FontSize="15" Alignment="Center" />
+					<RobotoText Color="Black" Value="{data()}" FontSize="15" Alignment="Center" Clicked="{addRemark}" />
 
 					</Panel>
 					<Rectangle Height="1" Color="#e8e8ea" Width="90%" />
@@ -344,14 +266,14 @@
 			
 			<ScrollView>
 			<StackPanel ux:Name="itemlist" Width="100%" Height="465" Background="#E6E5EB" Margin="0, 0, 0, 30">
-				<Each Items="{confirm}">
+				<Each Items="{product}">
 					<ConfirmOrder>
 						<Clicked>
 							<Set shadow.Visibility="Visible" />
 							<Set summaryCon.Visibility="Visible" Delay="0.1" />
 							<Set summaryCon.Y="{position}" />
 							<Set summaryUncon.Visibility="Collapsed" />
-				
+							<Callback Handler="{select}" />
 						</Clicked>
 					</ConfirmOrder>
 				</Each>
@@ -390,6 +312,32 @@
 		
 	</Circle>
 
+	<Panel ux:Class="ConfirmOrder" >
 	
+
+	<StackPanel Background="#fff" Margin="0,0,0,2" Height="80">
+		<Panel Alignment="Left" Width="20%">
+			<Text Value="{quantity}" FontSize="23" X="15" Y="8" Font="Bold" TextColor="#000" />
+		</Panel>				
+			
+		<Panel Alignment="Center" Width="60%" Y="-15">
+			<StackPanel Y="-3">
+				<Text Value="{name}" FontSize="16" TextWrapping="Wrap" Font="Bold" TextColor="#000" />
+				<!--Each Items="{remark}">
+					<Text Value="{data()}" FontSize="13" TextWrapping="Wrap" X="10" Color="#303591"/>
+				</Each-->
+				
+			</StackPanel>
+	
+			
+		</Panel>
+							
+		<Panel Alignment="Right" Width="20%" Margin="5, 5, 5, 5" Y="-10">
+			<Text Value="${price}" FontSize="15" Alignment="CenterLeft" Font="Bold" TextColor="#000" TextWrapping="Wrap" Margin="0, 0, 0, 0" />
+		</Panel>
+		
+	</StackPanel>
+	
+</Panel>
 	
 </App>

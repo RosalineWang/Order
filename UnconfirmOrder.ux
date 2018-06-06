@@ -2,6 +2,7 @@
 	
 
 	<StackPanel Background="#D5D4DA" Height="80" Margin="0,0,0,2" Layer="Layout">
+		
 		<Panel Alignment="Left" Width="20%">
 			<Text Value="1" FontSize="23" X="15" Y="8" Font="Bold" TextColor="#000" />
 		</Panel>				

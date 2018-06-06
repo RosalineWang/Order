@@ -28,22 +28,13 @@ sealed class Order_accessor_OToggle_IsActive: global::Uno.UX.PropertyAccessor
     public override void SetAsObject(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((global::OToggle)obj).SetIsActive((bool)v, origin); }
     public override bool SupportsOriginSetter { get { return true; } }
 }
-sealed class Order_FuseControlsTextControl_Value_Property: Uno.UX.Property<string>
+sealed class Order_FuseElementsElement_Visibility_Property: Uno.UX.Property<Fuse.Elements.Visibility>
 {
-    [Uno.WeakReference] readonly Fuse.Controls.TextControl _obj;
-    public Order_FuseControlsTextControl_Value_Property(Fuse.Controls.TextControl obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    [Uno.WeakReference] readonly Fuse.Elements.Element _obj;
+    public Order_FuseElementsElement_Visibility_Property(Fuse.Elements.Element obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
     public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
-    public override string Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Controls.TextControl)obj).Value; }
-    public override void Set(global::Uno.UX.PropertyObject obj, string v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Controls.TextControl)obj).SetValue(v, origin); }
-    public override bool SupportsOriginSetter { get { return true; } }
-}
-sealed class Order_FuseControlsTextControl_Color_Property: Uno.UX.Property<float4>
-{
-    [Uno.WeakReference] readonly Fuse.Controls.TextControl _obj;
-    public Order_FuseControlsTextControl_Color_Property(Fuse.Controls.TextControl obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
-    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
-    public override float4 Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Controls.TextControl)obj).Color; }
-    public override void Set(global::Uno.UX.PropertyObject obj, float4 v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Controls.TextControl)obj).SetColor(v, origin); }
+    public override Fuse.Elements.Visibility Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Elements.Element)obj).Visibility; }
+    public override void Set(global::Uno.UX.PropertyObject obj, Fuse.Elements.Visibility v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Elements.Element)obj).SetVisibility(v, origin); }
     public override bool SupportsOriginSetter { get { return true; } }
 }
 sealed class Order_FuseReactiveEach_Items_Property: Uno.UX.Property<object>
@@ -54,22 +45,31 @@ sealed class Order_FuseReactiveEach_Items_Property: Uno.UX.Property<object>
     public override object Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Reactive.Each)obj).Items; }
     public override void Set(global::Uno.UX.PropertyObject obj, object v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Reactive.Each)obj).Items = v; }
 }
-sealed class Order_FuseElementsElement_Opacity_Property: Uno.UX.Property<float>
+sealed class Order_FuseControlsTextControl_Value_Property: Uno.UX.Property<string>
 {
-    [Uno.WeakReference] readonly Fuse.Elements.Element _obj;
-    public Order_FuseElementsElement_Opacity_Property(Fuse.Elements.Element obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    [Uno.WeakReference] readonly Fuse.Controls.TextControl _obj;
+    public Order_FuseControlsTextControl_Value_Property(Fuse.Controls.TextControl obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
     public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
-    public override float Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Elements.Element)obj).Opacity; }
-    public override void Set(global::Uno.UX.PropertyObject obj, float v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Elements.Element)obj).SetOpacity(v, origin); }
+    public override string Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Controls.TextControl)obj).Value; }
+    public override void Set(global::Uno.UX.PropertyObject obj, string v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Controls.TextControl)obj).SetValue(v, origin); }
     public override bool SupportsOriginSetter { get { return true; } }
 }
-sealed class Order_FuseElementsElement_Visibility_Property: Uno.UX.Property<Fuse.Elements.Visibility>
+sealed class Order_FuseControlsShape_Color_Property: Uno.UX.Property<float4>
 {
-    [Uno.WeakReference] readonly Fuse.Elements.Element _obj;
-    public Order_FuseElementsElement_Visibility_Property(Fuse.Elements.Element obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    [Uno.WeakReference] readonly Fuse.Controls.Shape _obj;
+    public Order_FuseControlsShape_Color_Property(Fuse.Controls.Shape obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
     public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
-    public override Fuse.Elements.Visibility Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Elements.Element)obj).Visibility; }
-    public override void Set(global::Uno.UX.PropertyObject obj, Fuse.Elements.Visibility v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Elements.Element)obj).SetVisibility(v, origin); }
+    public override float4 Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Controls.Shape)obj).Color; }
+    public override void Set(global::Uno.UX.PropertyObject obj, float4 v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Controls.Shape)obj).SetColor(v, origin); }
+    public override bool SupportsOriginSetter { get { return true; } }
+}
+sealed class Order_FuseControlsTextControl_Color_Property: Uno.UX.Property<float4>
+{
+    [Uno.WeakReference] readonly Fuse.Controls.TextControl _obj;
+    public Order_FuseControlsTextControl_Color_Property(Fuse.Controls.TextControl obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
+    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
+    public override float4 Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Controls.TextControl)obj).Color; }
+    public override void Set(global::Uno.UX.PropertyObject obj, float4 v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Controls.TextControl)obj).SetColor(v, origin); }
     public override bool SupportsOriginSetter { get { return true; } }
 }
 sealed class Order_FuseElementsElement_Y_Property: Uno.UX.Property<Uno.UX.Size>
@@ -87,15 +87,6 @@ sealed class Order_FuseTriggersActionsSetUnoUXSize_Value_Property: Uno.UX.Proper
     public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
     public override Uno.UX.Size Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Triggers.Actions.Set<Uno.UX.Size>)obj).Value; }
     public override void Set(global::Uno.UX.PropertyObject obj, Uno.UX.Size v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Triggers.Actions.Set<Uno.UX.Size>)obj).Value = v; }
-}
-sealed class Order_FuseControlsShape_Color_Property: Uno.UX.Property<float4>
-{
-    [Uno.WeakReference] readonly Fuse.Controls.Shape _obj;
-    public Order_FuseControlsShape_Color_Property(Fuse.Controls.Shape obj, global::Uno.UX.Selector name) : base(name) { _obj = obj; }
-    public override global::Uno.UX.PropertyObject Object { get { return _obj; } }
-    public override float4 Get(global::Uno.UX.PropertyObject obj) { return ((Fuse.Controls.Shape)obj).Color; }
-    public override void Set(global::Uno.UX.PropertyObject obj, float4 v, global::Uno.UX.IPropertyListener origin) { ((Fuse.Controls.Shape)obj).SetColor(v, origin); }
-    public override bool SupportsOriginSetter { get { return true; } }
 }
 sealed class Order_FuseGesturesSwipeGesture_IsActive_Property: Uno.UX.Property<bool>
 {
